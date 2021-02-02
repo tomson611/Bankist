@@ -391,4 +391,10 @@ console.log(movements);
 console.log(movements.includes(-130));
 
 const anyDeposits = movements.some(mov => mov > 1500);
-console.log(anyDeposits);  
+console.log(anyDeposits);
+
+console.log(movements.every(mov => mov > 0));
+console.log(account4.movements.every(mov => mov > 0));
+
+const deposit = mov => mov > 0;
+console.log(movements.some(deposit));
