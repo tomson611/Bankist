@@ -448,29 +448,35 @@ btnSort.addEventListener('click', function (e) {
 // // });
 // movements.sort((a, b) => b - a);
 // console.log(movements);
-const arr = [1, 2, 3, 4, 5, 6, 7];
-const x = new Array(7);
-console.log(x);
-x.fill(7);
-console.log(x);
-arr.fill(23, 4, 6);
-console.log(arr);
+// const arr = [1, 2, 3, 4, 5, 6, 7];
+// const x = new Array(7);
+// console.log(x);
+// x.fill(7);
+// console.log(x);
+// arr.fill(23, 4, 6);
+// console.log(arr);
 
-const u = Array.from({ length: 7 }, () => 1);
-console.log(u);
+// const u = Array.from({ length: 7 }, () => 1);
+// console.log(u);
 
-const z = Array.from({ length: 7 }, (_, i) => i + 1);
-console.log(z);
+// const z = Array.from({ length: 7 }, (_, i) => i + 1);
+// console.log(z);
 
-const dice = Array.from(
-  { length: 100 },
-  () => 1 + Math.floor(Math.random() * 6)
-);
-console.log(dice);
+// const dice = Array.from(
+//   { length: 100 },
+//   () => 1 + Math.floor(Math.random() * 6)
+// );
+// console.log(dice);
 
-labelBalance.addEventListener('click', function () {
-  const movementsUI = Array.from(
-    document.querySelectorAll('.movements__value')
-  );
-  console.log(movementsUI.map(el => el.textContent.replace('€', '')));
-});
+// labelBalance.addEventListener('click', function () {
+//   const movementsUI = Array.from(
+//     document.querySelectorAll('.movements__value')
+//   );
+//   console.log(movementsUI.map(el => el.textContent.replace('€', '')));
+// });
+
+const bankDepositSum = accounts
+  .flatMap(acc => acc.movements)
+  .filter(mov => mov > 0)
+  .reduce((sum, cur) => sum + cur, 0);
+console.log(bankDepositSum);
