@@ -580,3 +580,27 @@ dogs.map(dog =>
 console.log(ownersEatTooMuch, ownersEatTooLittle);
 
 console.log(dogs.some(dog => dog.curFood === dog.recommendedFood));
+console.log(
+  dogs.some(
+    dog =>
+      dog.curFood > dog.recommendedFood * 0.9 &&
+      dog.curFood < dog.recommendedFood * 1.1
+  )
+);
+
+const okFood = [];
+
+dogs.map(dog =>
+  dog.curFood > dog.recommendedFood * 0.9 &&
+  dog.curFood < dog.recommendedFood * 1.1
+    ? okFood.push(dog)
+    : ''
+);
+console.log(okFood);
+
+const dogsSorted = [...dogs].sort((a, b) => {
+  if (a.recommendedFood > b.recommendedFood) return 1;
+  if (b.recommendedFood > a.recommendedFood) return -1;
+});
+
+console.log(dogsSorted);
