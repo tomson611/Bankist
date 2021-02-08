@@ -566,14 +566,13 @@ console.log(
   }`
 );
 
-const ownersEatTooMuch = [];
-const ownersEatTooLittle = [];
+const ownersEatTooMuch = dogs
+  .filter(dog => dog.curFood > dog.recommendedFood)
+  .flatMap(dog => dog.owners);
+const ownersEatTooLittle = dogs
+  .filter(dog => dog.curFood < dog.recommendedFood)
+  .flatMap(dog => dog.owners);
 
-dogs.map(dog =>
-  dog.curFood < dog.recommendedFood
-    ? ownersEatTooLittle.push(dog.owners)
-    : ownersEatTooMuch.push(dog.owners)
-);
 console.log(ownersEatTooMuch, ownersEatTooLittle);
 
 console.log(dogs.some(dog => dog.curFood === dog.recommendedFood));
