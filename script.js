@@ -559,16 +559,13 @@ const dogs = [
 
 dogs.map(dog => (dog.recommendedFood = dog.weight ** 0.75 * 28));
 
-dogs.map(dog => {
-  if (dog.owners.find(owner => owner === 'Sarah')) {
-    console.log(
-      dog.curFood < dog.recommendedFood
-        ? 'Dog eats too little'
-        : 'Dog eats too much'
-    );
-  }
-});
-console.log(dogs);
+const dogSarah = dogs.find(dog => dog.owners.includes('Sarah'));
+console.log(
+  `Sarah's dog is eating too ${
+    dogSarah.curFood > dogSarah.recommendedFood ? 'much' : 'little'
+  }`
+);
+
 const ownersEatTooMuch = [];
 const ownersEatTooLittle = [];
 
