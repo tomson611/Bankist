@@ -595,8 +595,7 @@ console.log(
 );
 
 const dogsSorted = [...dogs].sort((a, b) => {
-  if (a.recommendedFood > b.recommendedFood) return 1;
-  if (b.recommendedFood > a.recommendedFood) return -1;
+  a.recommendedFood - b.recommendedFood;
 });
 
 console.log(dogsSorted);
