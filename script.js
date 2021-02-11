@@ -689,18 +689,36 @@ btnSort.addEventListener('click', function (e) {
 //     if (i % 3 == 0) row.style.backgroundColor = 'blue';
 //   });
 // });
-console.log(2 ** 53 - 1);
-console.log(Number.MAX_SAFE_INTEGER);
-console.log(2312312323123123213123123123123123123n);
-console.log(BigInt(312313213123123123213123131));
+// console.log(2 ** 53 - 1);
+// console.log(Number.MAX_SAFE_INTEGER);
+// console.log(2312312323123123213123123123123123123n);
+// console.log(BigInt(312313213123123123213123131));
 
-//Operations
-console.log(10000n + 10000n);
-console.log(312312312312312312312313n * 1000000n);
-const huge = 31231231231231231231n;
-const num = 23;
+// //Operations
+// console.log(10000n + 10000n);
+// console.log(312312312312312312312313n * 1000000n);
+// const huge = 31231231231231231231n;
+// const num = 23;
 
-console.log(huge * BigInt(num));
+// console.log(huge * BigInt(num));
 
-console.log(20n > 15);
-console.log(20n === 20);
+// console.log(20n > 15);
+// console.log(20n === 20);
+
+// const now = new Date();
+// console.log(now);
+// console.log(new Date('December 24, 2015'));
+// console.log(new Date(account1.movementsDates[0]));
+// console.log(new Date(2037, 10, 19, 15, 23, 5));
+// console.log(new Date(2037, 10, 31));
+
+// console.log(new Date(0));
+// console.log(3 * 24 * 60 * 60 * 1000);
+
+// Working with dates
+
+const future = new Date(2037, 10, 19, 15, 23);
+console.log(future);
+console.log(future.getFullYear());
+console.log(future.getMonth());
+console.log(future.getDate());
