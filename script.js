@@ -170,8 +170,8 @@ btnLogin.addEventListener('click', function (e) {
     const day = `${now.getDate()}`.padStart(2, 0);
     const month = `${now.getMonth() + 1}`.padStart(2, 0);
     const year = now.getFullYear();
-    const hour = now.getHours();
-    const min = now.getMinutes();
+    const hour = `now.getHours()`.padStart(2, 0);
+    const min = `now.getMinutes()`.padStart(2, 0);
     labelDate.textContent = `${day}/${month}/${year}/${hour}:${min}`;
 
     inputLoginPin.value = inputLoginUsername.value = '';
@@ -187,7 +187,7 @@ btnLoan.addEventListener('click', function (e) {
 
   if (amount > 0 && currentAccount.movements.some(mov => mov >= amount / 10)) {
     currentAccount.movements.push(amount);
-    currentAccount.movementsDates.push(new Date());
+    currentAccount.movementsDates.push(new Date().toISOString());
     updateUI(currentAccount);
   }
   inputLoanAmount.value = '';
@@ -227,8 +227,8 @@ btnTransfer.addEventListener('click', function (e) {
   ) {
     currentAccount.movements.push(-amount);
     receiverAcc.movements.push(amount);
-    currentAccount.movementsDates.push(new Date());
-    receiverAcc.movementsDates.push(new Date());
+    currentAccount.movementsDates.push(new Date().toISOString());
+    receiverAcc.movementsDates.push(new Date().toISOString());
     updateUI(currentAccount);
   }
 });
