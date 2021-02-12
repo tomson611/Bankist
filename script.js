@@ -752,14 +752,26 @@ labelDate.textContent = `${day}/${month}/${year}/${hour}:${min}`;
 
 // Working with dates
 
-const future = new Date(2037, 10, 19, 15, 23);
-console.log(future);
-console.log(future.getFullYear());
-console.log(future.getMonth());
-console.log(future.getDate());
-console.log(future.getDay());
-console.log(future.getMinutes());
-console.log(future.getSeconds());
-console.log(future.getTime());
+// const future = new Date(2037, 10, 19, 15, 23);
+// console.log(future);
+// console.log(future.getFullYear());
+// console.log(future.getMonth());
+// console.log(future.getDate());
+// console.log(future.getDay());
+// console.log(future.getMinutes());
+// console.log(future.getSeconds());
+// console.log(future.getTime());
 
-console.log(Date.now());
+// console.log(Date.now());
+
+const future = new Date(2037, 10, 19, 15, 23);
+console.log(+future);
+
+const calcDaysPassed = (date1, date2) =>
+  Math.abs(date2 - date1) / (1000 * 60 * 60 * 24);
+
+const days1 = calcDaysPassed(
+  new Date(2037, 3, 14),
+  new Date(2037, 3, 4, 10, 8)
+);
+console.log(days1);
