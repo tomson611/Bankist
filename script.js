@@ -74,6 +74,20 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
+const now = new Date();
+const options = {
+  hour: 'numeric',
+  minute: 'numeric',
+  day: 'numeric',
+  year: 'numeric',
+  month: 'long',
+  weekday: 'long',
+};
+
+const locale = navigator.language;
+console.log(locale);
+labelDate.textContent = new Intl.DateTimeFormat('locale', options).format(now);
+
 const formatMovementDate = function (date) {
   const calcDaysPassed = (date1, date2) =>
     Math.round(Math.abs(date2 - date1) / (1000 * 60 * 60 * 24));
@@ -246,17 +260,17 @@ btnSort.addEventListener('click', function (e) {
   sorted = !sorted;
 });
 
-// currentAccount = account1;
-// updateUI(currentAccount);
-// containerApp.style.opacity = 100;
+currentAccount = account1;
+updateUI(currentAccount);
+containerApp.style.opacity = 100;
 
-const now = new Date();
-const day = `${now.getDate()}`.padStart(2, 0);
-const month = `${now.getMonth() + 1}`.padStart(2, 0);
-const year = now.getFullYear();
-const hour = now.getHours();
-const min = now.getMinutes();
-labelDate.textContent = `${day}/${month}/${year}/${hour}:${min}`;
+// const now = new Date();
+// const day = `${now.getDate()}`.padStart(2, 0);
+// const month = `${now.getMonth() + 1}`.padStart(2, 0);
+// const year = now.getFullYear();
+// const hour = now.getHours();
+// const min = now.getMinutes();
+// labelDate.textContent = `${day}/${month}/${year}/${hour}:${min}`;
 
 // const deposits = movements.filter(function (mov) {
 //   return mov > 0;
