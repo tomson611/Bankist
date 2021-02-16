@@ -789,14 +789,28 @@ containerApp.style.opacity = 100;
 
 // console.log(Date.now());
 
-const future = new Date(2037, 10, 19, 15, 23);
-console.log(+future);
+// const future = new Date(2037, 10, 19, 15, 23);
+// console.log(+future);
 
-const calcDaysPassed = (date1, date2) =>
-  Math.abs(date2 - date1) / (1000 * 60 * 60 * 24);
+// const calcDaysPassed = (date1, date2) =>
+//   Math.abs(date2 - date1) / (1000 * 60 * 60 * 24);
 
-const days1 = calcDaysPassed(
-  new Date(2037, 3, 14),
-  new Date(2037, 3, 4, 10, 8)
+// const days1 = calcDaysPassed(
+//   new Date(2037, 3, 14),
+//   new Date(2037, 3, 4, 10, 8)
+// );
+// console.log(days1);
+
+const num = 388312312.23;
+const options = {
+  style: 'currency',
+  unit: 'celsius',
+  currency: 'EUR',
+};
+
+console.log('US:     ', new Intl.NumberFormat('en-US', options).format(num));
+console.log(
+  'Germany:     ',
+  new Intl.NumberFormat('de-De', options).format(num)
 );
-console.log(days1);
+console.log('Syria:     ', new Intl.NumberFormat('ar-SY', options).format(num));
