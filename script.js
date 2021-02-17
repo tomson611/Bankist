@@ -169,12 +169,34 @@ const updateUI = function (acc) {
   calcDisplaySummary(acc);
 };
 
+const startLogOutTimer = function () {
+  const tick = function () {
+    const min = String(Math.trunc(time / 60)).padStart(2, 0);
+    const sec = String(time % 60).padStart(2, 0);
+    labelTimer.textContent = `${min}: ${sec}`;
+
+    if (time === 0) {
+      clearInterval(timer);
+      labelWelcome.textContent = 'Log in to get started';
+      containerApp.style.opacity = 0;
+    }
+
+    time--;
+  };
+
+  let time = 30;
+  tick();
+
+  const timer = setInterval(tick, 1000);
+  return timer;
+};
+
 const calcDisplayBalance = function (acc) {
   acc.balance = acc.movements.reduce((acc, mov) => acc + mov, 0);
   labelBalance.textContent = formatCur(acc.balance, acc.locale, acc.currency);
 };
 
-let currentAccount;
+let currentAccount, timer;
 
 btnLogin.addEventListener('click', function (e) {
   e.preventDefault();
@@ -209,6 +231,10 @@ btnLogin.addEventListener('click', function (e) {
     inputLoginPin.value = inputLoginUsername.value = '';
     inputLoginPin.blur();
 
+    if (timer) clearInterval(timer);
+
+    timer = startLogOutTimer();
+
     updateUI(currentAccount);
   }
 });
@@ -222,6 +248,8 @@ btnLoan.addEventListener('click', function (e) {
       currentAccount.movements.push(amount);
       currentAccount.movementsDates.push(new Date().toISOString());
       updateUI(currentAccount);
+      clearInterval(timer);
+      timer = startLogOutTimer();
     }, 2500);
   }
   inputLoanAmount.value = '';
@@ -264,6 +292,8 @@ btnTransfer.addEventListener('click', function (e) {
     currentAccount.movementsDates.push(new Date().toISOString());
     receiverAcc.movementsDates.push(new Date().toISOString());
     updateUI(currentAccount);
+    clearInterval(timer);
+    timer = startLogOutTimer();
   }
 });
 
@@ -274,9 +304,9 @@ btnSort.addEventListener('click', function (e) {
   sorted = !sorted;
 });
 
-currentAccount = account1;
-updateUI(currentAccount);
-containerApp.style.opacity = 100;
+// currentAccount = account1;
+// updateUI(currentAccount);
+// containerApp.style.opacity = 100;
 
 // const now = new Date();
 // const day = `${now.getDate()}`.padStart(2, 0);
@@ -824,18 +854,24 @@ containerApp.style.opacity = 100;
 // );
 // console.log('Syria:     ', new Intl.NumberFormat('ar-SY', options).format(num));
 
-//setTimeout
-const ingredients = ['olives', ''];
-const pizzaTimer = setTimeout(
-  (ing1, ing2) => console.log(`Here is your pizza with ${ing1} and ${ing2}`),
-  3000,
-  ...ingredients
-);
-console.log('Waiting...');
+// //setTimeout
+// const ingredients = ['olives', ''];
+// const pizzaTimer = setTimeout(
+//   (ing1, ing2) => console.log(`Here is your pizza with ${ing1} and ${ing2}`),
+//   3000,
+//   ...ingredients
+// );
+// console.log('Waiting...');
 
-if (ingredients.includes('spinach')) clearTimeout(pizzaTimer);
+// if (ingredients.includes('spinach')) clearTimeout(pizzaTimer);
 
-setInterval(() => {
-  const now = new Date();
-  console.log(now);
-}, 1000);
+// setInterval(() => {
+//   const now = new Date();
+//   const options = {
+//     hour: 'numeric',
+//     minute: 'numeric',
+//     second: 'numeric',
+//   };
+//   const clock = new Intl.DateTimeFormat('pl-PL', options).format(now);
+//   console.log(clock);
+// }, 1000);
